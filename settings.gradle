@@ -14,7 +14,7 @@ rootProject.name = "SandBox"
 include ':calc'
 
 def properties = new Properties()
-def inputStream = file('app/local.properties').newDataInputStream()
+def inputStream = file('local.properties').newDataInputStream()
 properties.load(inputStream)
 gradle.ext.sign_storeFile = properties.getProperty('sign_storeFile')
 gradle.ext.sign_storePassword = properties.getProperty('sign_storePassword')
