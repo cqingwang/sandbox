@@ -115,7 +115,7 @@ public class SandBoxCore extends ClientConfiguration {
       throw new IllegalArgumentException("ClientConfiguration is null!");
     }
     BlackReflection.DEBUG = BuildConfig.DEBUG;
-    Reflection.unseal(context);
+    Reflection.unseal(context);//load dex with prop file as readonly
     sContext = context;
     mClientConfiguration = clientConfiguration;
 

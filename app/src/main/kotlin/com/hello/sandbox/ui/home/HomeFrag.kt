@@ -240,19 +240,19 @@ class HomeFrag : Fragment() {
   fun getData(): List<HomeBannerInfo> {
     val list = ArrayList<HomeBannerInfo>()
     var info1 = HomeBannerInfo("", resources.getDrawable(R.drawable.home_banner_1))
-    var info2 =
-      HomeBannerInfo(
-        Constant.RECOMMEND_MOMO_APP_URL,
-        resources.getDrawable(R.drawable.home_banner_2)
-      )
-    var info3 =
-      HomeBannerInfo(
-        Constant.RECOMMEND_TANTAN_APP_URL,
-        resources.getDrawable(R.drawable.home_banner_3)
-      )
+//    var info2 =
+//      HomeBannerInfo(
+//        Constant.RECOMMEND_MOMO_APP_URL,
+//        resources.getDrawable(R.drawable.home_banner_2)
+//      )
+//    var info3 =
+//      HomeBannerInfo(
+//        Constant.RECOMMEND_TANTAN_APP_URL,
+//        resources.getDrawable(R.drawable.home_banner_3)
+//      )
     list.add(info1)
-    list.add(info2)
-    list.add(info3)
+//    list.add(info2)
+//    list.add(info3)
     return list
   }
 
