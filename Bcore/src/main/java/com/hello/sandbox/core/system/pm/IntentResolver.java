@@ -45,9 +45,9 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
 
   public void addFilter(F f) {
     if (localLOGV) {
-      Slog.v(TAG, "Adding filter: " + f);
+      Slog.log(TAG, "Adding filter: " + f);
       f.intentFilter.dump(new LogPrinter(Log.VERBOSE, TAG), "      ");
-      Slog.v(TAG, "    Building Lookup Maps:");
+      Slog.log(TAG, "    Building Lookup Maps:");
     }
 
     mFilters.add(f);
@@ -156,9 +156,9 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
 
   void removeFilterInternal(F f) {
     if (localLOGV) {
-      Slog.v(TAG, "Removing filter: " + f);
+      Slog.log(TAG, "Removing filter: " + f);
       f.intentFilter.dump(new LogPrinter(Log.VERBOSE, TAG), "      ");
-      Slog.v(TAG, "    Cleaning Lookup Maps:");
+      Slog.log(TAG, "    Cleaning Lookup Maps:");
     }
 
     int numS =
@@ -323,7 +323,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
         localLOGV || ((intent.getFlags() & Intent.FLAG_DEBUG_LOG_RESOLUTION) != 0);
 
     if (debug)
-      Slog.v(
+      Slog.log(
           TAG,
           "Resolving type="
               + resolvedType
@@ -352,26 +352,26 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
             // Not a wild card, so we can just look for all filters that
             // completely match or wildcards whose base type matches.
             firstTypeCut = mTypeToFilter.get(resolvedType);
-            if (debug) Slog.v(TAG, "First type cut: " + Arrays.toString(firstTypeCut));
+            if (debug) Slog.log(TAG, "First type cut: " + Arrays.toString(firstTypeCut));
             secondTypeCut = mWildTypeToFilter.get(baseType);
-            if (debug) Slog.v(TAG, "Second type cut: " + Arrays.toString(secondTypeCut));
+            if (debug) Slog.log(TAG, "Second type cut: " + Arrays.toString(secondTypeCut));
           } else {
             // We can match anything with our base type.
             firstTypeCut = mBaseTypeToFilter.get(baseType);
-            if (debug) Slog.v(TAG, "First type cut: " + Arrays.toString(firstTypeCut));
+            if (debug) Slog.log(TAG, "First type cut: " + Arrays.toString(firstTypeCut));
             secondTypeCut = mWildTypeToFilter.get(baseType);
-            if (debug) Slog.v(TAG, "Second type cut: " + Arrays.toString(secondTypeCut));
+            if (debug) Slog.log(TAG, "Second type cut: " + Arrays.toString(secondTypeCut));
           }
           // Any */* types always apply, but we only need to do this
           // if the intent type was not already */*.
           thirdTypeCut = mWildTypeToFilter.get("*");
-          if (debug) Slog.v(TAG, "Third type cut: " + Arrays.toString(thirdTypeCut));
+          if (debug) Slog.log(TAG, "Third type cut: " + Arrays.toString(thirdTypeCut));
         } else if (intent.getAction() != null) {
           // The intent specified any type ({@literal *}/*).  This
           // can be a whole heck of a lot of things, so as a first
           // cut let's use the action instead.
           firstTypeCut = mTypedActionToFilter.get(intent.getAction());
-          if (debug) Slog.v(TAG, "Typed Action list: " + Arrays.toString(firstTypeCut));
+          if (debug) Slog.log(TAG, "Typed Action list: " + Arrays.toString(firstTypeCut));
         }
       }
     }
@@ -381,7 +381,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     // on the authority and path by directly matching each resulting filter).
     if (scheme != null) {
       schemeCut = mSchemeToFilter.get(scheme);
-      if (debug) Slog.v(TAG, "Scheme list: " + Arrays.toString(schemeCut));
+      if (debug) Slog.log(TAG, "Scheme list: " + Arrays.toString(schemeCut));
     }
 
     // If the intent does not specify any data -- either a MIME type or
@@ -389,7 +389,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     // data.
     if (resolvedType == null && scheme == null && intent.getAction() != null) {
       firstTypeCut = mActionToFilter.get(intent.getAction());
-      if (debug) Slog.v(TAG, "Action list: " + Arrays.toString(firstTypeCut));
+      if (debug) Slog.log(TAG, "Action list: " + Arrays.toString(firstTypeCut));
     }
 
     FastImmutableArraySet<String> categories = getFastIntentCategories(intent);
@@ -445,9 +445,9 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     //        sortResults(finalList);
 
     if (debug) {
-      Slog.v(TAG, "Final result list:");
+      Slog.log(TAG, "Final result list:");
       for (int i = 0; i < finalList.size(); i++) {
-        Slog.v(TAG, "  " + finalList.get(i));
+        Slog.log(TAG, "  " + finalList.get(i));
       }
     }
     return finalList;
@@ -539,7 +539,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     while (i.hasNext()) {
       String name = i.next();
       num++;
-      if (localLOGV) Slog.v(TAG, prefix + name);
+      if (localLOGV) Slog.log(TAG, prefix + name);
       String baseName = name;
       final int slashpos = name.indexOf('/');
       if (slashpos > 0) {
@@ -570,7 +570,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     while (i.hasNext()) {
       String name = i.next();
       num++;
-      if (localLOGV) Slog.v(TAG, prefix + name);
+      if (localLOGV) Slog.log(TAG, prefix + name);
       String baseName = name;
       final int slashpos = name.indexOf('/');
       if (slashpos > 0) {
@@ -600,7 +600,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     while (i.hasNext()) {
       String name = i.next();
       num++;
-      if (localLOGV) Slog.v(TAG, prefix + name);
+      if (localLOGV) Slog.log(TAG, prefix + name);
       addFilter(dest, name, filter);
     }
     return num;
@@ -616,7 +616,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     while (i.hasNext()) {
       String name = i.next();
       num++;
-      if (localLOGV) Slog.v(TAG, prefix + name);
+      if (localLOGV) Slog.log(TAG, prefix + name);
       remove_all_objects(dest, name, filter);
     }
     return num;
@@ -679,11 +679,11 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
     F filter;
     for (i = 0; i < N && (filter = src[i]) != null; i++) {
       int match;
-      if (debug) Slog.v(TAG, "Matching against filter " + filter);
+      if (debug) Slog.log(TAG, "Matching against filter " + filter);
 
       //            if (excludingStopped && isFilterStopped(filter, userId)) {
       //                if (debug) {
-      //                    Slog.v(TAG, "  Filter's target is stopped; skipping");
+      //                    Slog.log(TAG, "  Filter's target is stopped; skipping");
       //                }
       //                continue;
       //            }
@@ -691,7 +691,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
       // Is delivery being limited to filters owned by a particular package?
       if (packageName != null && !isPackageForFilter(packageName, filter)) {
         if (debug) {
-          Slog.v(TAG, "  Filter is not from package " + packageName + "; skipping");
+          Slog.log(TAG, "  Filter is not from package " + packageName + "; skipping");
         }
         continue;
       }
@@ -699,7 +699,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
       // Do we already have this one?
       if (!allowFilterResult(filter, dest)) {
         if (debug) {
-          Slog.v(TAG, "  Filter's target already added");
+          Slog.log(TAG, "  Filter's target already added");
         }
         continue;
       }
@@ -707,7 +707,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
       match = filter.intentFilter.match(action, resolvedType, scheme, data, categories, TAG);
       if (match >= 0) {
         if (debug)
-          Slog.v(
+          Slog.log(
               TAG,
               "  Filter matched!  match=0x"
                   + Integer.toHexString(match)
@@ -715,7 +715,7 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
                   + filter.intentFilter.hasCategory(Intent.CATEGORY_DEFAULT));
         if (!defaultOnly || filter.intentFilter.hasCategory(Intent.CATEGORY_DEFAULT)) {
           final R oneResult = newResult(filter, match, userId);
-          if (debug) Slog.v(TAG, "    Created result: " + oneResult);
+          if (debug) Slog.log(TAG, "    Created result: " + oneResult);
           if (oneResult != null) {
             dest.add(oneResult);
           }
@@ -742,16 +742,16 @@ public abstract class IntentResolver<F extends BPackage.IntentInfo, R extends Ob
               reason = "unknown reason";
               break;
           }
-          Slog.v(TAG, "  Filter did not match: " + reason);
+          Slog.log(TAG, "  Filter did not match: " + reason);
         }
       }
     }
 
     if (debug && hasNonDefaults) {
       if (dest.size() == 0) {
-        Slog.v(TAG, "resolveIntent failed: found match, but none with CATEGORY_DEFAULT");
+        Slog.log(TAG, "resolveIntent failed: found match, but none with CATEGORY_DEFAULT");
       } else if (dest.size() > 1) {
-        Slog.v(TAG, "resolveIntent: multiple matches, only some with CATEGORY_DEFAULT");
+        Slog.log(TAG, "resolveIntent: multiple matches, only some with CATEGORY_DEFAULT");
       }
     }
   }

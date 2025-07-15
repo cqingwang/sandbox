@@ -19,8 +19,7 @@ public class IContextHubServiceProxy extends BinderInvocationStub {
 
   @Override
   protected Object getWho() {
-    return BRIContextHubServiceStub.get()
-        .asInterface(BRServiceManager.get().getService(getServiceName()));
+    return BRIContextHubServiceStub.get().asInterface(BRServiceManager.get().getService(getServiceName()));
   }
 
   @Override

@@ -133,7 +133,7 @@ public class ComponentResolver {
                     ? other.getComponentName()
                     : null;
             final String packageName = component != null ? component.getPackageName() : "?";
-            Slog.w(
+            Slog.logw(
                 TAG,
                 "Skipping provider name "
                     + name

@@ -324,12 +324,12 @@ public class BLocationManagerService extends IBLocationManagerService.Stub
           HashMap<String, BLocationConfig> configArrayMap =
               parcel.readHashMap(BLocationConfig.class.getClassLoader());
           mLocationConfigs.put(userId, configArrayMap);
-          Slog.d(TAG, "load userId: " + userId + ", config: " + configArrayMap);
+          Slog.log(TAG, "load userId: " + userId + ", config: " + configArrayMap);
         }
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Slog.d(TAG, "bad config");
+      Slog.log(TAG, "bad config");
       FileUtils.deleteDir(BEnvironment.getFakeLocationConf());
     } finally {
       parcel.recycle();

@@ -45,7 +45,7 @@ public class LauncherActivity extends Activity {
     PackageInfo packageInfo =
         SandBoxCore.getBPackageManager().getPackageInfo(packageName, 0, userId);
     if (packageInfo == null) {
-      Slog.e(TAG, packageName + " not installed!");
+      Slog.loge(TAG, packageName + " not installed!");
       finish();
       return;
     }

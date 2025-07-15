@@ -36,14 +36,14 @@ public class InstallResult implements Parcelable {
     this.msg = msg;
     this.success = false;
     this.packageName = packageName;
-    Slog.d(TAG, msg);
+    Slog.log(TAG, msg);
     return this;
   }
 
   public InstallResult installError(String msg) {
     this.msg = msg;
     this.success = false;
-    Slog.d(TAG, msg);
+    Slog.log(TAG, msg);
     return this;
   }
 

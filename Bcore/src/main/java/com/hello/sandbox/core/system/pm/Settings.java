@@ -78,7 +78,7 @@ import java.util.Set;
     }
     if (sharedUserSetting != null) {
       p.appId = sharedUserSetting.userId;
-      Slog.d(
+      Slog.log(
           TAG, p.pkg.packageName + " sharedUserId = " + sharedUserId + ", setAppId = " + p.appId);
     }
     if (p.appId == 0) {
@@ -207,7 +207,7 @@ import java.util.Set;
       }
       bPackageSettings.save();
       mPackages.put(bPackageSettings.pkg.packageName, bPackageSettings);
-      Slog.d(TAG, "loaded Package: " + packageName);
+      Slog.log(TAG, "loaded Package: " + packageName);
     } catch (Throwable e) {
       e.printStackTrace();
       // bad package
@@ -215,7 +215,7 @@ import java.util.Set;
       removePackage(packageName);
       BProcessManagerService.get().killAllByPackageName(packageName);
       BPackageManagerService.get().onPackageUninstalled(packageName, true, BUserHandle.USER_ALL);
-      Slog.d(TAG, "bad Package: " + packageName);
+      Slog.log(TAG, "bad Package: " + packageName);
     } finally {
       packageSettingsIn.recycle();
     }
@@ -223,7 +223,7 @@ import java.util.Set;
 
   private BPackageSettings reInstallBySystem(PackageInfo systemPackageInfo, InstallOption option)
       throws Exception {
-    Slog.d(TAG, "reInstallBySystem: " + systemPackageInfo.packageName);
+    Slog.log(TAG, "reInstallBySystem: " + systemPackageInfo.packageName);
     PackageParser.Package aPackage = parserApk(systemPackageInfo.applicationInfo.sourceDir);
     if (aPackage == null) {
       throw new RuntimeException("parser apk error.");

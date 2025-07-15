@@ -35,7 +35,7 @@ public class BPackageInstallerService extends IBPackageInstallerService.Stub
     InstallOption option = ps.installOption;
     for (Executor executor : executors) {
       int exec = executor.exec(ps, option, userId);
-      Slog.d(
+      Slog.log(
           TAG, "installPackageAsUser: " + executor.getClass().getSimpleName() + " exec: " + exec);
       if (exec != 0) {
         return exec;
@@ -56,7 +56,7 @@ public class BPackageInstallerService extends IBPackageInstallerService.Stub
     InstallOption option = ps.installOption;
     for (Executor executor : executors) {
       int exec = executor.exec(ps, option, userId);
-      Slog.d(
+      Slog.log(
           TAG, "uninstallPackageAsUser: " + executor.getClass().getSimpleName() + " exec: " + exec);
       if (exec != 0) {
         return exec;
@@ -75,7 +75,7 @@ public class BPackageInstallerService extends IBPackageInstallerService.Stub
     InstallOption option = ps.installOption;
     for (Executor executor : executors) {
       int exec = executor.exec(ps, option, userId);
-      Slog.d(
+      Slog.log(
           TAG, "uninstallPackageAsUser: " + executor.getClass().getSimpleName() + " exec: " + exec);
       if (exec != 0) {
         return exec;

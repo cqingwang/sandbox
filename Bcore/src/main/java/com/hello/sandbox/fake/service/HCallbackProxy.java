@@ -219,7 +219,7 @@ public class HCallbackProxy implements IInjectHook, Handler.Callback {
       if (!serviceInfo.name.equals(ProxyManifest.getProxyService(BActivityThread.getAppPid()))
           && !serviceInfo.name.equals(
               ProxyManifest.getProxyJobService(BActivityThread.getAppPid()))) {
-        Slog.d(TAG, "handleCreateService: " + data);
+        Slog.log(TAG, "handleCreateService: " + data);
         Intent intent = new Intent();
         intent.setComponent(new ComponentName(appPackageName, serviceInfo.name));
         SandBoxCore.getBActivityManager()

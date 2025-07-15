@@ -27,7 +27,7 @@ public class SystemCallProvider extends ContentProvider {
   @Nullable
   @Override
   public Bundle call(@NonNull String method, @Nullable String arg, @Nullable Bundle extras) {
-    Slog.d(TAG, "call: " + method + ", " + extras);
+    Slog.log(TAG, "call: " + method + ", " + extras);
     if ("VM".equals(method)) {
       Bundle bundle = new Bundle();
       if (extras != null) {

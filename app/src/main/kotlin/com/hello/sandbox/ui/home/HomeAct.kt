@@ -21,11 +21,11 @@ import top.niunaijun.blackboxa.view.apps.AppsViewModel
 class HomeAct : BaseAct() {
   private lateinit var binding: ActivityHomeBinding
   private lateinit var viewPager: NoScrollViewPager
-  private lateinit var imageHome: ImageView
-  private lateinit var imageAdd: ImageView
-  private lateinit var imageMe: ImageView
-  private lateinit var rlHome: RelativeLayout
-  private lateinit var rlMe: RelativeLayout
+//  private lateinit var imageHome: ImageView
+//  private lateinit var imageAdd: ImageView
+//  private lateinit var imageMe: ImageView
+//  private lateinit var rlHome: RelativeLayout
+//  private lateinit var rlMe: RelativeLayout
 
   private val fragments: MutableList<Fragment> = ArrayList()
 
@@ -45,7 +45,7 @@ class HomeAct : BaseAct() {
     setContentView(binding.root)
     initToolbar(binding.toolbarLayout.toolbar, R.string.app_name)
     initViews()
-    initClickListener()
+//    initClickListener()
     initViewModel()
     if (GuideHelper.isNeedShowGuideDlg(this)) {
       GuideHelper.showGuideDlg(this)
@@ -60,21 +60,21 @@ class HomeAct : BaseAct() {
   }
 
   private fun initViews() {
-    imageHome = binding.imageHome
-    imageAdd = binding.imageAdd
-    imageMe = binding.imageMe
-    rlHome = binding.rlHome
-    rlMe = binding.rlMe
+//    imageHome = binding.imageHome
+//    imageAdd = binding.imageAdd
+//    imageMe = binding.imageMe
+//    rlHome = binding.rlHome
+//    rlMe = binding.rlMe
     viewPager = binding.viewPager
     viewPager.offscreenPageLimit = 2
     fragments.run {
       add(HomeFrag.getInstance())
-      add(MeFrag.getInstance())
+//      add(MeFrag.getInstance())
     }
     viewPager.adapter = PageAdapter(supportFragmentManager, fragments)
     viewPager.currentItem = 0
-    imageHome.setImageResource(R.drawable.bottom_tab_home_selected)
-    imageMe.setImageResource(R.drawable.bottom_tab_me_unselected)
+//    imageHome.setImageResource(R.drawable.bottom_tab_home_selected)
+//    imageMe.setImageResource(R.drawable.bottom_tab_me_unselected)
   }
 
   private val apkPathResult =
@@ -92,38 +92,39 @@ class HomeAct : BaseAct() {
       }
     }
 
-  private fun initClickListener() {
-    ViewUtil.singleClickListener(rlHome) { changeToHome() }
-
-    ViewUtil.singleClickListener(imageAdd) { jumpSelectApkList() }
-
-    ViewUtil.singleClickListener(rlMe) { changeToMe() }
-  }
+//  private fun initClickListener() {
+//    ViewUtil.singleClickListener(rlHome) { changeToHome() }
+//
+//    ViewUtil.singleClickListener(imageAdd) { jumpSelectApkList() }
+//
+//    ViewUtil.singleClickListener(rlMe) { changeToMe() }
+//  }
 
   fun jumpSelectApkList() {
     val intent = Intent(this, SearchListActivity::class.java)
     apkPathResult.launch(intent)
   }
 
-  private fun changeToHome() {
-    viewPager.currentItem = 0
-    imageHome.setImageResource(R.drawable.bottom_tab_home_selected)
-    imageMe.setImageResource(R.drawable.bottom_tab_me_unselected)
-    updateToolBarTitle(binding.toolbarLayout.toolbar, getString(R.string.app_name))
-  }
+//  private fun changeToHome() {
+//    viewPager.currentItem = 0
+//    imageHome.setImageResource(R.drawable.bottom_tab_home_selected)
+//    imageMe.setImageResource(R.drawable.bottom_tab_me_unselected)
+//    updateToolBarTitle(binding.toolbarLayout.toolbar, getString(R.string.app_name))
+//  }
 
-  private fun changeToMe() {
-    viewPager.currentItem = 1
-    imageMe.setImageResource(R.drawable.bottom_tab_me_selected)
-    imageHome.setImageResource(R.drawable.bottom_tab_home_unselected)
-    updateToolBarTitle(binding.toolbarLayout.toolbar, "我的")
-  }
+//  private fun changeToMe() {
+//    viewPager.currentItem = 1
+//    imageMe.setImageResource(R.drawable.bottom_tab_me_selected)
+//    imageHome.setImageResource(R.drawable.bottom_tab_home_unselected)
+//    updateToolBarTitle(binding.toolbarLayout.toolbar, "我的")
+//  }
 
   override fun onBackPressed() {
-    if (viewPager.currentItem != 0) {
-      changeToHome()
-    } else {
-      moveTaskToBack(true)
-    }
+//    if (viewPager.currentItem != 0) {
+//      changeToHome()
+//    } else {
+//      moveTaskToBack(true)
+//    }
+    moveTaskToBack(true)
   }
 }

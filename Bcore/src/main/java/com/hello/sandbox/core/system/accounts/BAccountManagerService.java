@@ -402,13 +402,13 @@ public class BAccountManagerService extends IBAccountManagerService.Stub
         try {
           response.onResult(result);
         } catch (RemoteException e) {
-          Slog.w(TAG, "Failed to report error back to the client." + e);
+          Slog.logw(TAG, "Failed to report error back to the client." + e);
         }
       }
       return;
     }
 
-    Slog.d(
+    Slog.log(
         TAG,
         "Copying account " + account.toString() + " from user " + userFrom + " to user " + userTo);
     new Session(
@@ -557,17 +557,17 @@ public class BAccountManagerService extends IBAccountManagerService.Stub
     Preconditions.checkArgument(response != null, "response cannot be null");
     try {
       if (account == null) {
-        Slog.w(TAG, "getAuthToken called with null account");
+        Slog.logw(TAG, "getAuthToken called with null account");
         response.onError(AccountManager.ERROR_CODE_BAD_ARGUMENTS, "account is null");
         return;
       }
       if (authTokenType == null) {
-        Slog.w(TAG, "getAuthToken called with null authTokenType");
+        Slog.logw(TAG, "getAuthToken called with null authTokenType");
         response.onError(AccountManager.ERROR_CODE_BAD_ARGUMENTS, "authTokenType is null");
         return;
       }
     } catch (RemoteException e) {
-      Slog.w(TAG, "Failed to report error back to the client." + e);
+      Slog.logw(TAG, "Failed to report error back to the client." + e);
       return;
     }
     final BUserAccounts accounts = getUserAccounts(userId);
@@ -1093,7 +1093,7 @@ public class BAccountManagerService extends IBAccountManagerService.Stub
     synchronized (accounts.lock) {
       BAccount bAccount = accounts.getAccount(account);
       if (bAccount != null) {
-        Slog.d(TAG, "skipping since insertExtra failed for key " + account);
+        Slog.log(TAG, "skipping since insertExtra failed for key " + account);
         return false;
       }
       bAccount = accounts.addAccount(account);
@@ -1364,7 +1364,7 @@ public class BAccountManagerService extends IBAccountManagerService.Stub
           try {
             response.onResult(result);
           } catch (RemoteException e) {
-            Slog.e(TAG, "Error calling onResult()", e);
+            Slog.loge(TAG, "Error calling onResult()", e);
           }
         }
       }
@@ -1933,7 +1933,7 @@ public class BAccountManagerService extends IBAccountManagerService.Stub
 
       //            if (!isLocalUnlockedUser(mAccounts.userId)
       //                    && !authenticatorInfo.componentInfo.directBootAware) {
-      //                Slog.w(TAG, "Blocking binding to authenticator " +
+      //                Slog.logw(TAG, "Blocking binding to authenticator " +
       // authenticatorInfo.componentName
       //                        + " which isn't encryption aware");
       //                return false;

@@ -67,7 +67,7 @@ public class BProcessManagerService implements ISystemService {
           }
         }
         bpid = getUsingBPidL();
-        Slog.d(TAG, "init bUid = " + buid + ", bPid = " + bpid);
+        Slog.log(TAG, "init bUid = " + buid + ", bPid = " + bpid);
       }
       if (bpid == -1) {
         throw new RuntimeException("No processes available");

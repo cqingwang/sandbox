@@ -40,7 +40,7 @@ public class INotificationManagerProxy extends BinderInvocationStub {
 
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-    //        Slog.d(TAG, "call: " + method.getName());
+    //        Slog.log(TAG, "call: " + method.getName());
     MethodParameterUtils.replaceAllAppPkg(args);
     return super.invoke(proxy, method, args);
   }

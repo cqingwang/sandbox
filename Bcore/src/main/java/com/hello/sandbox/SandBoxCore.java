@@ -369,7 +369,7 @@ public class SandBoxCore extends ClientConfiguration {
     bundle.putString("_B_|_server_name_", name);
     Bundle vm = ProviderCall.callSafely(ProxyManifest.getBindProvider(), "VM", null, bundle);
     binder = BundleCompat.getBinder(vm, "_B_|_server_");
-    Slog.d(TAG, "getService: " + name + ", " + binder);
+    Slog.log(TAG, "getService: " + name + ", " + binder);
     mServices.put(name, binder);
     return binder;
   }

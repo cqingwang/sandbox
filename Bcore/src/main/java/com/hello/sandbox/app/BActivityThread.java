@@ -221,7 +221,7 @@ public class BActivityThread extends IBActivityThread.Stub {
       service = (Service) classLoader.loadClass(serviceInfo.name).newInstance();
     } catch (Exception e) {
       e.printStackTrace();
-      Slog.e(TAG, "Unable to instantiate service " + serviceInfo.name + ": " + e.toString());
+      Slog.loge(TAG, "Unable to instantiate service " + serviceInfo.name + ": " + e.toString());
       return null;
     }
 
@@ -260,7 +260,7 @@ public class BActivityThread extends IBActivityThread.Stub {
       service = (JobService) classLoader.loadClass(serviceInfo.name).newInstance();
     } catch (Exception e) {
       e.printStackTrace();
-      Slog.e(TAG, "Unable to create JobService " + serviceInfo.name + ": " + e.toString());
+      Slog.loge(TAG, "Unable to create JobService " + serviceInfo.name + ": " + e.toString());
       return null;
     }
 
@@ -320,7 +320,7 @@ public class BActivityThread extends IBActivityThread.Stub {
       packageInfo.providers = new ProviderInfo[] {};
     }
     mProviders.addAll(Arrays.asList(packageInfo.providers));
-    Slog.d(TAG, "handleBindApplication mProviders=" + mProviders);
+    Slog.log(TAG, "handleBindApplication mProviders=" + mProviders);
 
     Object boundApplication = BRActivityThread.get(SandBoxCore.mainThread()).mBoundApplication();
 
@@ -458,7 +458,7 @@ public class BActivityThread extends IBActivityThread.Stub {
     // 这个provider之后初始化一次，但是在易盾加固后所有provider会在onCreate里重新调用一次
     // 所以如果是易盾加固包，这里就没必要先install了
     if (application.getClass().getName().equals("com.netease.nis.wrapper.MyApplication")) {
-      Slog.d(TAG, "fixTantanYidun");
+      Slog.log(TAG, "fixTantanYidun");
       provider.clear();
     }
   }
@@ -480,7 +480,7 @@ public class BActivityThread extends IBActivityThread.Stub {
       for (ProviderInfo providerInfo : provider) {
         try {
           if (processName.equals(providerInfo.processName) || providerInfo.multiprocess) {
-            Slog.d(TAG, "installProviders:" + providerInfo);
+            Slog.log(TAG, "installProviders:" + providerInfo);
             installProvider(SandBoxCore.mainThread(), context, providerInfo, null);
           }
         } catch (Throwable ignored) {
@@ -670,7 +670,7 @@ public class BActivityThread extends IBActivityThread.Stub {
             SandBoxCore.getBActivityManager().finishBroadcast(data.data);
           } catch (Throwable throwable) {
             throwable.printStackTrace();
-            Slog.e(TAG, "Error receiving broadcast " + intent + " in " + mReceiver);
+            Slog.loge(TAG, "Error receiving broadcast " + intent + " in " + mReceiver);
           }
         });
   }

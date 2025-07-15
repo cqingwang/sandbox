@@ -30,10 +30,10 @@
     <!--        android:layout_margin="@dimen/dp_6" />-->
     <!--    </RelativeLayout>-->
 
-    <com.hello.sandbox.view.pager2banner.Banner
-      android:id="@+id/banner"
-      android:layout_width="match_parent"
-      android:layout_height="160dp" />
+<!--    <com.hello.sandbox.view.pager2banner.Banner-->
+<!--      android:id="@+id/banner"-->
+<!--      android:layout_width="match_parent"-->
+<!--      android:layout_height="160dp" />-->
 
     <include
       android:id="@+id/il_home_center_layout"

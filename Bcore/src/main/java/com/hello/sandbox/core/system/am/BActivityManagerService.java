@@ -209,7 +209,7 @@ public class BActivityManagerService extends IBActivityManagerService.Stub
 
     if (resolves.isEmpty()) {
       pendingResultData.build().finish();
-      Slog.d(TAG, "scheduleBroadcastReceiver empty");
+      Slog.log(TAG, "scheduleBroadcastReceiver empty");
       return;
     }
     mBroadcastManager.sendBroadcast(pendingResultData);

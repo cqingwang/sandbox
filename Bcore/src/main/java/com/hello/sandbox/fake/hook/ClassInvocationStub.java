@@ -7,6 +7,7 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 import com.hello.sandbox.utils.MethodParameterUtils;
+import com.hello.sandbox.utils.Slog;
 
 /** Created by Milk on 3/30/21. * ∧＿∧ (`･ω･∥ 丶　つ０ しーＪ 此处无Bug */
 public abstract class ClassInvocationStub implements InvocationHandler, IInjectHook {
@@ -38,6 +39,10 @@ public abstract class ClassInvocationStub implements InvocationHandler, IInjectH
   @Override
   public void injectHook() {
     mBase = getWho();
+    String self_type = this.toString();
+    if(mBase==null)    Slog.logw("ClassInvocationStub","self:"+this.getClass().getName()); //self = [com.hello.sandbox.fake.service.ISystemUpdateProxy]
+
+    Slog.logw("ClassInvocationStub",mBase+"");
     mProxyInvocation =
         Proxy.newProxyInstance(
             mBase.getClass().getClassLoader(),

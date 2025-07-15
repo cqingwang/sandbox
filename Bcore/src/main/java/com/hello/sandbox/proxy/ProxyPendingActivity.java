@@ -17,7 +17,7 @@ public class ProxyPendingActivity extends Activity {
     super.onCreate(savedInstanceState);
     finish();
     ProxyPendingRecord pendingActivityRecord = ProxyPendingRecord.create(getIntent());
-    Slog.d(TAG, "ProxyPendingActivity: " + pendingActivityRecord);
+    Slog.log(TAG, "ProxyPendingActivity: " + pendingActivityRecord);
     if (pendingActivityRecord.mTarget == null) return;
     pendingActivityRecord.mTarget.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     pendingActivityRecord.mTarget.setExtrasClassLoader(

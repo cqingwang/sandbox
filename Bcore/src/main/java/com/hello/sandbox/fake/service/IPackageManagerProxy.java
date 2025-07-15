@@ -121,7 +121,7 @@ public class IPackageManagerProxy extends BinderInvocationStub {
     protected Object hook(Object who, Method method, Object[] args) throws Throwable {
       String packageName = (String) args[0];
       for (Object o : args) {
-        Slog.d(TAG, "GetPackageInfo o.class=" + o.getClass() + ", value=" + o);
+        Slog.log(TAG, "GetPackageInfo o.class=" + o.getClass() + ", value=" + o);
       }
       int flag = Integer.parseInt(args[1] + "");
       //            if (ClientSystemEnv.isFakePackage(packageName)) {
@@ -249,7 +249,7 @@ public class IPackageManagerProxy extends BinderInvocationStub {
     protected Object hook(Object who, Method method, Object[] args) throws Throwable {
       String packageName = (String) args[0];
       for (Object o : args) {
-        Slog.d(TAG, "getApplicationInfo o.class=" + o.getClass() + ", value=" + o);
+        Slog.log(TAG, "getApplicationInfo o.class=" + o.getClass() + ", value=" + o);
       }
       int flags = Integer.parseInt(args[1] + "");
       //            if (ClientSystemEnv.isFakePackage(packageName)) {
@@ -259,13 +259,13 @@ public class IPackageManagerProxy extends BinderInvocationStub {
           SandBoxCore.getBPackageManager()
               .getApplicationInfo(packageName, flags, BActivityThread.getUserId());
       if (applicationInfo != null) {
-        Slog.d(TAG, "getApplicationInfo metaData=" + applicationInfo.metaData);
+        Slog.log(TAG, "getApplicationInfo metaData=" + applicationInfo.metaData);
         if (applicationInfo.metaData != null) {
-          Slog.d(
+          Slog.log(
               TAG,
               "getApplicationInfo applicationInfo.metaData.get(\"com.facebook.sdk.ApplicationId\")"
                   + applicationInfo.metaData.get("com.facebook.sdk.ApplicationId"));
-          Slog.d(
+          Slog.log(
               TAG,
               "getApplicationInfo applicationInfo.metaData.get(\"com.facebook.sdk.ClientToken\")"
                   + applicationInfo.metaData.getString("com.facebook.sdk.ClientToken"));
@@ -312,7 +312,7 @@ public class IPackageManagerProxy extends BinderInvocationStub {
       List<ResolveInfo> resolves =
           SandBoxCore.getBPackageManager()
               .queryBroadcastReceivers(intent, flags, type, BActivityThread.getUserId());
-      Slog.d(TAG, "queryIntentReceivers: " + resolves);
+      Slog.log(TAG, "queryIntentReceivers: " + resolves);
 
       // http://androidxref.com/7.0.0_r1/xref/frameworks/base/core/java/android/app/ApplicationPackageManager.java#872
       if (BuildCompat.isN()) {
@@ -359,7 +359,7 @@ public class IPackageManagerProxy extends BinderInvocationStub {
         uid = (int) args[0];
       }
       String[] packagesForUid = SandBoxCore.getBPackageManager().getPackagesForUid(uid);
-      Slog.d(
+      Slog.log(
           TAG,
           args[0]
               + " , "

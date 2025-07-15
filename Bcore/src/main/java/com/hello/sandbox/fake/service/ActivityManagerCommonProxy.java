@@ -31,7 +31,7 @@ public class ActivityManagerCommonProxy {
     protected Object hook(Object who, Method method, Object[] args) throws Throwable {
       MethodParameterUtils.replaceFirstAppPkg(args);
       Intent intent = getIntent(args);
-      Slog.d(TAG, "Hook in : " + intent);
+      Slog.log(TAG, "Hook in : " + intent);
       assert intent != null;
       if (intent.getParcelableExtra("_B_|_target_") != null) {
         return method.invoke(who, args);

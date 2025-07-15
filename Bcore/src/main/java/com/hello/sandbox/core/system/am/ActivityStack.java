@@ -412,7 +412,7 @@ public class ActivityStack {
         shadow.setComponent(
             new ComponentName(SandBoxCore.getHostPkg(), ProxyManifest.getProxyActivity(vpid)));
       }
-      Slog.d(TAG, activityInfo + ", windowIsTranslucent: " + windowIsTranslucent);
+      Slog.log(TAG, activityInfo + ", windowIsTranslucent: " + windowIsTranslucent);
     } catch (Throwable e) {
       e.printStackTrace();
       shadow.setComponent(

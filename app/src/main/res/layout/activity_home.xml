@@ -19,57 +19,57 @@
     android:isScrollContainer="true"
     android:scrollbars="none" />
 
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/bottom_dark"
-    android:gravity="center"
-    android:orientation="horizontal">
+<!--  <LinearLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="60dp"-->
+<!--    android:background="@color/bottom_dark"-->
+<!--    android:gravity="center"-->
+<!--    android:orientation="horizontal">-->
 
-    <RelativeLayout
-      android:id="@+id/rl_home"
-      android:layout_width="0dp"
-      android:layout_height="32dp"
-      android:layout_weight="1"
-      android:gravity="center">
+<!--    <RelativeLayout-->
+<!--      android:id="@+id/rl_home"-->
+<!--      android:layout_width="0dp"-->
+<!--      android:layout_height="32dp"-->
+<!--      android:layout_weight="1"-->
+<!--      android:gravity="center">-->
 
-      <ImageView
-        android:id="@+id/image_home"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/bottom_tab_home_selected" />
+<!--      <ImageView-->
+<!--        android:id="@+id/image_home"-->
+<!--        android:layout_width="32dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:src="@drawable/bottom_tab_home_selected" />-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
-    <RelativeLayout
-      android:layout_width="0dp"
-      android:layout_height="47dp"
-      android:layout_weight="1"
-      android:gravity="center">
+<!--    <RelativeLayout-->
+<!--      android:layout_width="0dp"-->
+<!--      android:layout_height="47dp"-->
+<!--      android:layout_weight="1"-->
+<!--      android:gravity="center">-->
 
-      <ImageView
-        android:id="@+id/image_add"
-        android:layout_width="47dp"
-        android:layout_height="47dp"
-        android:src="@drawable/bottom_tab_add" />
+<!--      <ImageView-->
+<!--        android:id="@+id/image_add"-->
+<!--        android:layout_width="47dp"-->
+<!--        android:layout_height="47dp"-->
+<!--        android:src="@drawable/bottom_tab_add" />-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
-    <RelativeLayout
-      android:id="@+id/rl_me"
-      android:layout_width="0dp"
-      android:layout_height="32dp"
-      android:layout_weight="1"
-      android:gravity="center">
+<!--    <RelativeLayout-->
+<!--      android:id="@+id/rl_me"-->
+<!--      android:layout_width="0dp"-->
+<!--      android:layout_height="32dp"-->
+<!--      android:layout_weight="1"-->
+<!--      android:gravity="center">-->
 
-      <ImageView
-        android:id="@+id/image_me"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/bottom_tab_me_unselected" />
+<!--      <ImageView-->
+<!--        android:id="@+id/image_me"-->
+<!--        android:layout_width="32dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:src="@drawable/bottom_tab_me_unselected" />-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
-  </LinearLayout>
+<!--  </LinearLayout>-->
 
 </LinearLayout>

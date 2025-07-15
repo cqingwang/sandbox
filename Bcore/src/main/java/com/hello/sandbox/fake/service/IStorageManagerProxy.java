@@ -47,10 +47,10 @@ public class IStorageManagerProxy extends BinderInvocationStub {
 
     @Override
     protected Object hook(Object who, Method method, Object[] args) throws Throwable {
-      Slog.e(TAG, "fixupAppDir");
+      Slog.loge(TAG, "fixupAppDir");
       if (args != null) {
         for (Object o : args) {
-          Slog.e(TAG, "args=" + o);
+          Slog.loge(TAG, "args=" + o);
         }
       }
       return method.invoke(who, args);

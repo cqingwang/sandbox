@@ -739,7 +739,7 @@ public class BPackageManagerService extends IBPackageManagerService.Stub impleme
       if (apkFile != null && option.isFlag(InstallOption.FLAG_URI_FILE)) {
         FileUtils.deleteDir(apkFile);
       }
-      Slog.d(TAG, "install finish: " + (System.currentTimeMillis() - l) + "ms");
+      Slog.log(TAG, "install finish: " + (System.currentTimeMillis() - l) + "ms");
     }
     return result;
   }
@@ -800,14 +800,14 @@ public class BPackageManagerService extends IBPackageManagerService.Stub impleme
     for (PackageMonitor packageMonitor : mPackageMonitors) {
       packageMonitor.onPackageUninstalled(packageName, isRemove, userId);
     }
-    Slog.d(TAG, "onPackageUninstalled: " + packageName + ", userId: " + userId);
+    Slog.log(TAG, "onPackageUninstalled: " + packageName + ", userId: " + userId);
   }
 
   void onPackageInstalled(String packageName, int userId) {
     for (PackageMonitor packageMonitor : mPackageMonitors) {
       packageMonitor.onPackageInstalled(packageName, userId);
     }
-    Slog.d(TAG, "onPackageInstalled: " + packageName + ", userId: " + userId);
+    Slog.log(TAG, "onPackageInstalled: " + packageName + ", userId: " + userId);
   }
 
   public BPackageSettings getBPackageSetting(String packageName) {

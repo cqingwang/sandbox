@@ -72,4 +72,32 @@ public final class Slog {
   public static int println(int priority, String tag, String msg) {
     return Log.println(priority, tag, msg);
   }
+
+  public static void log(String mod, String msg) {
+    d("vplay", mod + " -> " + msg);
+  }
+
+  public static void logw(String mod, String msg) {
+    v("vplay", mod + " -> " + msg);
+  }
+
+  public static void loge(String mod, String msg) {
+    e("vplay", mod + " -> " + msg);
+  }
+
+  public static void loge(String mod, String msg, Throwable e) {
+    e("vplay", mod + " -> " + msg, e);
+  }
+
+  public static String stacks(String label) {
+    StackTraceElement[] el = new Throwable().getStackTrace();
+    String text = label + "|stack|";
+
+    if (el != null) {
+      for (int i = 0; i < el.length; i++) {
+        text = text + i + ": " + el[i].getClassName() + "." + el[i].getMethodName() + "() @" + el[i].getFileName() + "#" + el[i].getLineNumber() + "\n";
+      }
+    }
+    return text;
+  }
 }

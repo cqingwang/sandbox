@@ -298,7 +298,7 @@ public class PackageManagerCompat {
     }
     ApplicationInfo ai = new ApplicationInfo(p.applicationInfo);
     if ((flags & PackageManager.GET_META_DATA) != 0) {
-      Slog.d(
+      Slog.log(
           "generateApplicationInfo",
           "getApplicationInfo (flags & PackageManager.GET_META_DATA) != 0; p.mAppMetaData="
               + p.mAppMetaData);

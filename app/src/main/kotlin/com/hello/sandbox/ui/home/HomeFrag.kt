@@ -84,28 +84,28 @@ class HomeFrag : Fragment() {
     //    }
     normalColor = ContextCompat.getColor(context!!, R.color.indicator_normal)
     checkedColor = ContextCompat.getColor(context!!, R.color.indicator_selected)
-    banner = binding.banner
-    banner!!.post {
-      banner!!.layoutParams.width = Vu.screenWidth()
-      banner!!.layoutParams.height = (Vu.screenWidth() / 2.5).toInt()
-      banner!!.requestLayout()
-    }
-    banner!!.setIndicator(
-      IndicatorView(requireContext())
-        .setIndicatorColor(normalColor)
-        .setIndicatorSpacing(IndicatorUtils.dp2px(4f).toFloat())
-        .setIndicatorSelectorColor(checkedColor)
-        .setIndicatorStyle(INDICATOR_CIRCLE)
-    )
+//    banner = binding.banner
+//    banner!!.post {
+//      banner!!.layoutParams.width = Vu.screenWidth()
+//      banner!!.layoutParams.height = (Vu.screenWidth() / 2.5).toInt()
+//      banner!!.requestLayout()
+//    }
+//    banner!!.setIndicator(
+//      IndicatorView(requireContext())
+//        .setIndicatorColor(normalColor)
+//        .setIndicatorSpacing(IndicatorUtils.dp2px(4f).toFloat())
+//        .setIndicatorSelectorColor(checkedColor)
+//        .setIndicatorStyle(INDICATOR_CIRCLE)
+//    )
 
-    banner!!.adapter = ViewPager2Adapter(getData())
-    (banner!!.adapter as ViewPager2Adapter).setOnItemClickListener {
-      if (TextUtils.isEmpty(it.url)) {
-        GuideHelper.showGuideDlg(requireContext())
-      } else {
-        MarketHelper.goToAppMarket(requireActivity(), it.url)
-      }
-    }
+//    banner!!.adapter = ViewPager2Adapter(getData())
+//    (banner!!.adapter as ViewPager2Adapter).setOnItemClickListener {
+//      if (TextUtils.isEmpty(it.url)) {
+//        GuideHelper.showGuideDlg(requireContext())
+//      } else {
+//        MarketHelper.goToAppMarket(requireActivity(), it.url)
+//      }
+//    }
 
     appInstallViewModel = ViewModelProvider(this).get(AppInstallViewModel::class.java)
     appInstallViewModel.registerReceiver(requireContext())
@@ -239,7 +239,7 @@ class HomeFrag : Fragment() {
 
   fun getData(): List<HomeBannerInfo> {
     val list = ArrayList<HomeBannerInfo>()
-    var info1 = HomeBannerInfo("", resources.getDrawable(R.drawable.home_banner_1))
+//    var info1 = HomeBannerInfo("", resources.getDrawable(R.drawable.home_banner_1))
 //    var info2 =
 //      HomeBannerInfo(
 //        Constant.RECOMMEND_MOMO_APP_URL,
@@ -250,7 +250,7 @@ class HomeFrag : Fragment() {
 //        Constant.RECOMMEND_TANTAN_APP_URL,
 //        resources.getDrawable(R.drawable.home_banner_3)
 //      )
-    list.add(info1)
+//    list.add(info1)
 //    list.add(info2)
 //    list.add(info3)
     return list

@@ -67,7 +67,7 @@ public class BroadcastManager implements PackageMonitor {
               try {
                 PendingResultData data = (PendingResultData) msg.obj;
                 data.build().finish();
-                Slog.d(TAG, "Timeout Receiver: " + data);
+                Slog.log(TAG, "Timeout Receiver: " + data);
               } catch (Throwable ignore) {
               }
               break;
@@ -112,7 +112,7 @@ public class BroadcastManager implements PackageMonitor {
   @SuppressLint("NewApi")
   private void registerPackage(BPackage bPackage) {
     synchronized (mReceivers) {
-      Slog.d(TAG, "register: " + bPackage.packageName  + ", size: " + bPackage.receivers.size());
+      Slog.log(TAG, "register: " + bPackage.packageName  + ", size: " + bPackage.receivers.size());
       for (BPackage.Activity receiver : bPackage.receivers)  {
         List<BPackage.ActivityIntentInfo> intents = receiver.intents;
         for (BPackage.ActivityIntentInfo intent : intents) {
@@ -154,7 +154,7 @@ public class BroadcastManager implements PackageMonitor {
 
   public void sendBroadcast(PendingResultData pendingResultData) {
     synchronized (mReceiversData) {
-      // Slog.d(TAG, "sendBroadcast: " + pendingResultData);
+      // Slog.log(TAG, "sendBroadcast: " + pendingResultData);
       mReceiversData.put(pendingResultData.mBToken, pendingResultData);
       Message obtain = Message.obtain(mHandler, MSG_TIME_OUT, pendingResultData);
       mHandler.sendMessageDelayed(obtain, TIMEOUT);
@@ -163,7 +163,7 @@ public class BroadcastManager implements PackageMonitor {
 
   public void finishBroadcast(PendingResultData data) {
     synchronized (mReceiversData) {
-      // Slog.d(TAG, "finishBroadcast: " + data);
+      // Slog.log(TAG, "finishBroadcast: " + data);
       mHandler.removeMessages(MSG_TIME_OUT, mReceiversData.get(data.mBToken));
     }
   }
@@ -174,7 +174,7 @@ public class BroadcastManager implements PackageMonitor {
       synchronized (mReceivers) {
         List<BroadcastReceiver> broadcastReceivers = mReceivers.get(packageName);
         if (broadcastReceivers != null) {
-          Slog.d(
+          Slog.log(
               TAG,
               "unregisterReceiver Package: "
                   + packageName
